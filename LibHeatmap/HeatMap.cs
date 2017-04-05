@@ -158,7 +158,7 @@ namespace LibHeatmap
             }
 
             // Generate HTML page
-            HtmlOutput = m_Template.Replace("{$API_KEY}", this.m_GoogleAPIKey);
+            HtmlOutput = HtmlOutput.Replace("{$API_KEY}", this.m_GoogleAPIKey);
 
             // Add IPs to HTML page
             string IPDefBuffer = "var heatmapData = [";
@@ -179,7 +179,7 @@ namespace LibHeatmap
             IPDefBuffer += "];";
 
             // Add IP Data into template
-            HtmlOutput = this.m_Template.Replace("{$IP_DATA}", IPDefBuffer);
+            HtmlOutput = HtmlOutput.Replace("{$IP_DATA}", IPDefBuffer);
 
             return HtmlOutput;
         }
