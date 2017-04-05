@@ -139,7 +139,7 @@ namespace LibHeatmap
             return true;
         }
 
-        public System.Drawing.Image Generate()
+        public string GenerateHTML()
         {
             string HtmlOutput = this.m_Template;
 
@@ -180,6 +180,13 @@ namespace LibHeatmap
 
             // Add IP Data into template
             HtmlOutput = this.m_Template.Replace("{$IP_DATA}", IPDefBuffer);
+
+            return HtmlOutput;
+        }
+
+        public System.Drawing.Image Generate()
+        {
+            string HtmlOutput = this.GenerateHTML();
 
             // Generate bitmap
             System.Drawing.Image image = HtmlRender.RenderToImageGdiPlus(HtmlOutput, this.m_Size);
